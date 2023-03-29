@@ -4,6 +4,7 @@ const config = {
   nodeEnv: process.env.NODE_ENV || 'development',
   port: process.env.PORT || 3000,
   host: process.env.HOST || '0.0.0.0',
+  databaseApp: process.env.DATABASE_APP || 'mongodb',
   database: {
     mongo: {
       url: process.env.MONGODB_URL

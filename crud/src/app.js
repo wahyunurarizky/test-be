@@ -13,12 +13,16 @@ const mongoConnection = require('./frameworks/database/mongodb/connection')
   expressConfig(app)
 
   // RUN SEQUELIZE
-  // const sequelize = mysqlConnection(config)
-  const sequelize = mysqlConnection(config)
+
+  let sequelize
+  if (config.databaseApp === 'mongodb') {
+    mongoConnection(config)
+  } else {
+    sequelize = mysqlConnection(config)
+  }
 
   // create channel rabbitemq
   const channel = await rabbitmqConnection(config)
-  mongoConnection(config)
   // DEFINE ROUTES
   routes(app, sequelize, channel)
 
