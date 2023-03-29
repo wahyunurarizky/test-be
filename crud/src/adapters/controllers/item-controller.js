@@ -3,11 +3,13 @@ const deleteById = require('../../application/use-cases/items/delete-by-id')
 const findAll = require('../../application/use-cases/items/find-all')
 const findById = require('../../application/use-cases/items/find-by-id')
 const updateById = require('../../application/use-cases/items/update-by-id')
-const itemRepository = require('../../frameworks/database/mysql/repositories/itemRepository')
+const itemRepository = require('../../frameworks/database/mongodb/repositories/itemRepository')
+// const itemRepository = require('../../frameworks/database/mysql/repositories/itemRepository')
 const sendNotif = require('../../frameworks/events/send-notif')
 
 module.exports = (sequelize, channel) => {
-  const repository = itemRepository(sequelize)
+  // const repository = itemRepository(sequelize)
+  const repository = itemRepository()
 
   const index = async (req, res, next) => {
     try {

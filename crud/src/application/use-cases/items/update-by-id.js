@@ -5,7 +5,7 @@ const validate = (payload) => {
   const schema = Joi.object({
     name: Joi.string().max(255),
     qty: Joi.number(),
-    id: Joi.number().required()
+    id: Joi.string().required()
   })
 
   // validate

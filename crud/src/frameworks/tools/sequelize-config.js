@@ -1,6 +1,6 @@
 const config = require('../../config')
 
-const { username, password, dbname, host, port, dialect } = config.database
+const { username, password, dbname, host, port, dialect } = config.database.sql
 
 module.exports = {
   development: {

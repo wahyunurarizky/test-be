@@ -3,7 +3,7 @@ const AppError = require('../../../frameworks/helpers/app-error')
 
 const validate = (payload) => {
   const schema = Joi.object({
-    id: Joi.number().required()
+    id: Joi.string().required()
   })
 
   // validate id should be a number

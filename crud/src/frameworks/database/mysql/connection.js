@@ -4,12 +4,12 @@ const postgresConnection = (config) => {
   // Database Configuration...
 
   const sequelize = new Sequelize({
-    host: config.database.host,
-    port: config.database.port,
-    username: config.database.username,
-    password: config.database.password,
-    database: config.database.dbname,
-    dialect: config.database.dialect
+    host: config.database.sql.host,
+    port: config.database.sql.port,
+    username: config.database.sql.username,
+    password: config.database.sql.password,
+    database: config.database.sql.dbname,
+    dialect: config.database.sql.dialect
   })
 
   sequelize
