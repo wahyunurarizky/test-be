@@ -1,0 +1,66 @@
+version: '3.0'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.9-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    container_name: rabbitmq-container
+    networks:
+      - same-network
+
+  mongodb:
+    image: mongo
+    volumes:
+      - ./crud/docker/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+    environment:
+      - MONGO_INITDB_DATABASE=db_test
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    ports:
+      - 27017:27017
+    container_name: mongo-container
+    networks:
+      - same-network
+
+  mysql:
+    image: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: db_test
+      MYSQL_ROOT_PASSWORD: password
+    container_name: mysql-container
+    networks:
+      - same-network
+
+  crud:
+    build:
+      context: ./crud
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    container_name: crud-container
+    networks:
+      - same-network
+    restart: unless-stopped
+    depends_on:
+      - rabbitmq
+      - mysql
+      - mongodb
+  websocket:
+    build:
+      context: ./websocket
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    container_name: websocket-container
+    restart: unless-stopped
+    depends_on:
+      - rabbitmq
+    networks:
+      - same-network
+
+networks:
+  same-network:
+    driver: bridge
