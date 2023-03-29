@@ -11,7 +11,8 @@ const config = {
     dbname: process.env.DB_NAME || '',
     port: process.env.DB_PORT || 3306,
     dialect: process.env.DB_DIALECT || 'mysql'
-  }
+  },
+  rabbitmqUrl: process.env.RABBITMQ_URL || 'amqp://localhost'
 }
 
 module.exports = config

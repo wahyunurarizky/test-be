@@ -4,16 +4,22 @@ const routes = require('./frameworks/webserver/routes')
 const server = require('./frameworks/webserver/server')
 const expressConfig = require('./frameworks/webserver/express')
 const mysqlConnection = require('./frameworks/database/mysql/connection')
+const rabbitmqConnection = require('./frameworks/events/connection')
 
-// DEFINE EXPRESS
-const app = express()
-expressConfig(app)
+;(async () => {
+  // DEFINE EXPRESS
+  const app = express()
+  expressConfig(app)
 
-// RUN SEQUELIZE
-const sequelize = mysqlConnection(config)
+  // RUN SEQUELIZE
+  const sequelize = mysqlConnection(config)
 
-// DEFINE ROUTES
-routes(app, sequelize)
+  // create channel rabbitemq
+  const channel = await rabbitmqConnection(config)
 
-// RUN SERVER
-server(app, config)
+  // DEFINE ROUTES
+  routes(app, sequelize, channel)
+
+  // RUN SERVER
+  server(app, config)
+})()

@@ -1,9 +1,9 @@
 const express = require('express')
 const itemController = require('../../../adapters/controllers/item-controller')
 
-const itemRoutes = (sequelize) => {
+const itemRoutes = (sequelize, channel) => {
   const router = express.Router()
-  const controller = itemController(sequelize)
+  const controller = itemController(sequelize, channel)
 
   router.get('/', controller.index)
   router.get('/:id', controller.show)
