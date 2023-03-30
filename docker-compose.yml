@@ -7,6 +7,7 @@ services:
       - 5672:5672
       - 15672:15672
     container_name: rabbitmq-container
+    restart: unless-stopped
     networks:
       - same-network
 
@@ -20,6 +21,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=password
     ports:
       - 27017:27017
+    restart: unless-stopped
     container_name: mongo-container
     networks:
       - same-network
