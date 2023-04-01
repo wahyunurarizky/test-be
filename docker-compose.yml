@@ -63,6 +63,34 @@ services:
     networks:
       - same-network
 
+  nest-crud:
+    build:
+      context: ./nest-crud
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3000"
+    container_name: nest-crud-container
+    networks:
+      - same-network
+    restart: unless-stopped
+    depends_on:
+      - rabbitmq
+      - mysql
+      - mongodb
+
+  nest-websocket:
+    build:
+      context: ./nest-websocket
+      dockerfile: Dockerfile
+    ports:
+      - "3003:3000"
+    container_name: nest-websocket-container
+    restart: unless-stopped
+    depends_on:
+      - rabbitmq
+    networks:
+      - same-network
+
 networks:
   same-network:
     driver: bridge

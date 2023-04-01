@@ -7,9 +7,6 @@ module.exports = async (channel, message) => {
   const data = {
     message
   }
-
-  console.log(channel)
-
   channel.assertExchange(exchangeName, 'direct', {
     durable: true
   })

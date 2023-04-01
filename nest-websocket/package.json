@@ -1,5 +1,5 @@
 {
-  "name": "nest-crud",
+  "name": "nest-websocket",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -23,12 +23,18 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/mapped-types": "*",
-    "@nestjs/mongoose": "^9.2.2",
+    "@nestjs/microservices": "^9.3.12",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/platform-socket.io": "^9.3.12",
+    "@nestjs/websockets": "^9.3.12",
+    "amqp-connection-manager": "^4.1.11",
     "amqplib": "^0.10.3",
-    "mongoose": "^7.0.3",
+    "install": "^0.13.0",
+    "nestjs": "^0.0.1",
+    "npm": "^9.6.3",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "socket.io": "^4.6.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

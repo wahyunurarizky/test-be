@@ -10,12 +10,15 @@ wanna change mongodb to mysql?
 api crud in localhost:3000
 websocket in localhost:3001
 
+nest api crud in localhost:3002
+nest websocket in localhost:3003
+
 how it's work?
 you can add data on api
-[GET] localhost:3000/api/v1/items
-[GET] localhost:3001/api/v1/items/:id
-[POST] localhost:3000/api/v1/items
-[PATCH] localhost:3001/api/v1/items/:id
-[DELETE] localhost:3001/api/v1/items/:id
+[GET] localhost:3002/api/v1/items
+[GET] localhost:3002/api/v1/items/:id
+[POST] localhost:3002/api/v1/items
+[PATCH] localhost:3002/api/v1/items/:id
+[DELETE] localhost:3002/api/v1/items/:id
 
 body JSON for POST and PATCH is name and qty

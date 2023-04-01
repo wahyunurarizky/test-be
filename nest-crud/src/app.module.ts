@@ -8,7 +8,7 @@ import { ItemsModule } from './items/items.module';
 @Module({
   imports: [
     ItemsModule,
-    MongooseModule.forRoot('mongodb://127.0.0.1:27017/mydb_nest'),
+    MongooseModule.forRoot('mongodb://mongodb:27017/mydb_nest'),
   ],
   controllers: [AppController],
   providers: [AppService],
