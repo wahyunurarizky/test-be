@@ -8,9 +8,7 @@ import { ItemsModule } from './items/items.module';
 @Module({
   imports: [
     ItemsModule,
-    MongooseModule.forRoot('mongodb://mongodb:27017/mydb_nest', {
-      pass: 'password',
-    }),
+    MongooseModule.forRoot('mongodb://root:password@mongodb:27017/db_test'),
   ],
   controllers: [AppController],
   providers: [AppService],
